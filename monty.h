@@ -37,39 +37,33 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-stack_t *head = NULL;
 extern stack_t *head;
 typedef void (*op_func)(stack_t **, unsigned int);
-/*file operations*/
 void openfile(char *thefile);
 int parseline(char *buffr, int linenumber, int format);
 void readfile(FILE *);
 int lenchars(FILE *);
 void findfunc(char *, char *, int, int);
 void callfun(op_func, char *, char *, int, int);
-/* error handling*/
 void error(int error_co, ...);
 void more_error(int error_co, ...);
 void string_error(int error_code, ...);
 void rotr(stack_t **, unsigned int);
-/*Stack operations*/
-stack_t *create_node(int n);
+stack_t *create_thenode(int n);
 void free_thenodes(void);
 void print_thestack(stack_t **, unsigned int);
 void addto_stack(stack_t **, unsigned int);
 void addto_queue(stack_t **, unsigned int);
 void print_tp(stack_t **, unsigned int);
 void pop_tp(stack_t **, unsigned int);
-stack_t *create_thenode(int n);
 void nop(stack_t **, unsigned int);
-void swap_nodes(stack_t **, unsigned int);
+void swapnodes(stack_t **, unsigned int);
 
-/*Math operations with nodes*/
-void add_nodes(stack_t **, unsigned int);
-void sub_nodes(stack_t **, unsigned int);
-void div_nodes(stack_t **, unsigned int);
-void mul_nodes(stack_t **, unsigned int);
-void mod_nodes(stack_t **, unsigned int);
+void addnodes(stack_t **, unsigned int);
+void subnodes(stack_t **, unsigned int);
+void divnodes(stack_t **, unsigned int);
+void mulnodes(stack_t **, unsigned int);
+void modnodes(stack_t **, unsigned int);
 
 
 void print_char(stack_t **, unsigned int);

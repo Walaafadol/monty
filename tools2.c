@@ -19,12 +19,12 @@ instruction_t func_list[] = {
 {"pint", print_tp},
 {"pop", pop_tp},
 {"nop", nop},
-{"swap", swap_nodes},
-{"add", add_nodes},
-{"sub", sub_nodes},
-{"div", div_nodes},
-{"mul", mul_nodes},
-{"mod", mod_nodes},
+{"swap", swapnodes},
+{"add", addnodes},
+{"sub", subnodes},
+{"div", divnodes},
+{"mul", mulnodes},
+{"mod", modnodes},
 {"pchar", print_char},
 {"pstr", print_str},
 {"rotl", rotl},
@@ -73,12 +73,12 @@ for (i = 0; valu[i] != '\0'; i++)
 if (isdigit(valu[i]) == 0)
 error(5, ln);
 }
-node = create_node(atoi(valu) * flag);
+node = create_thenode(atoi(valu) * flag);
 if (format == 0)
 func(&node, ln);
 if (format == 1)
 addto_queue(&node, ln);
 }
 else
-	func(&head, ln);
+func(&head, ln);
 }
