@@ -8,13 +8,11 @@
 
 void openfile(char *thefile)
 {
-	FILE *fd = fopen(thefile, "r");
-
-	if (thefile == NULL || fd == NULL)
-		eror(2, thefile);
-
-	readfile(fd);
-	fclose(fd);
+FILE *fd = fopen(thefile, "r");
+if (thefile == NULL || fd == NULL)
+error(2, thefile);
+readfile(fd);
+fclose(fd);
 }
 /**
  * readfile - reads a file
@@ -27,7 +25,6 @@ void readfile(FILE *fd)
 int line_number, format = 0;
 char *buffr = NULL;
 size_t len = 0;
-
 for (line_number = 1; getline(&buffr, &len, fd) != -1; line_number++)
 {
 format = parseline(buffr, line_number, format);
@@ -44,7 +41,7 @@ free(buffr);
  * Return: Returns 0 if the opcode is stack. 1 if queue.
  */
 
-int parse_line(char *buffer, int line_number, int format)
+int parseline(char *buffer, int line_number, int format)
 {
 char *op, *value;
 const char *delim = "\n ";

@@ -1,6 +1,6 @@
 # include "monty.h"
 /**
- * find_func - find the appropriate function for the opcode
+ * findfunc - find the appropriate function for the opcode
  * @opcode: opcode
  * @value: argument of opcode
  * @format:  storage format. If 0 Nodes will be entered as a stack.
@@ -14,10 +14,10 @@ int i;
 int flag;
 
 instruction_t func_list[] = {
-{"push", add_to_stack},
-{"pall", print_stack},
-{"pint", print_top},
-{"pop", pop_top},
+{"push", addto_stack},
+{"pall", print_thestack},
+{"pint", print_tp},
+{"pop", pop_tp},
 {"nop", nop},
 {"swap", swap_nodes},
 {"add", add_nodes},
@@ -31,24 +31,24 @@ instruction_t func_list[] = {
 {"rotr", rotr},
 {NULL, NULL}
 };
-
 if (opcode[0] == '#')
 return;
 for (flag = 1, i = 0; func_list[i].opcode != NULL; i++)
 {
 if (strcmp(opcode, func_list[i].opcode) == 0)
 {
-callfun(funclist[i].f, opcode, value, ln, format);
+callfun(func_list[i].f, opcode, value, ln, format);
 flag = 0;
 }
 if (flag == 1)
 error(3, ln, opcode);
 }
+}
 /**
- * call_fun - Calls the required function.
+ * callfun - Calls the required function.
  * @func: Pointer to the function that is about to be called.
- * @op: string representing the opcode.
- * @val: string representing a numeric value.
+ * @opc: string representing the opcode.
+ * @valu: string representing a numeric value.
  * @ln: line numeber for the instruction.
  * @format: Format specifier. If 0 Nodes will be entered as a stack.
  * if 1 nodes will be entered as a queue.
@@ -77,8 +77,8 @@ node = create_node(atoi(valu) * flag);
 if (format == 0)
 func(&node, ln);
 if (format == 1)
-add_to_queue(&node, ln);
+addto_queue(&node, ln);
 }
 else
-func(&head, ln);
-
+	func(&head, ln);
+}
