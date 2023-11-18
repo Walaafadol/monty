@@ -29,7 +29,7 @@ op = va_arg(arg, char *);
 fprintf(stderr, "L%d: can't %s, stack too short\n", line_num, op);
 break;
 case 9:
-fprintf(stderr, "L%d: division by zero \n",
+fprintf(stderr, "L%d: division by zero\n",
 va_arg(arg, unsigned int));
 break;
 default:
